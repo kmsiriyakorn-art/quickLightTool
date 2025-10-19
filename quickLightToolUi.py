@@ -143,7 +143,6 @@ class QuickLightDialog(QtWidgets.QDialog):
 	
 	def change_harmony_mode(self, mode_text):
 		"""Update the color wheel harmony mode based on combo box."""
-		# normalize text to lowercase, since your wheel likely uses that format
 		self.colorWheel.harmony_mode = mode_text.lower()
 		self.colorWheel.update()
 
