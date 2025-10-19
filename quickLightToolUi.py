@@ -139,7 +139,7 @@ class QuickLightDialog(QtWidgets.QDialog):
 		"""Open QColorDialog when user clicks on the box."""
 		color = QtWidgets.QColorDialog.getColor(self.currentColor, self, "Pick Light Color")
 		if color.isValid():
-			self.update_color_box(color,)
+			self.update_color_box(color)
 	
 	def change_harmony_mode(self, mode_text):
 		"""Update the color wheel harmony mode based on combo box."""
