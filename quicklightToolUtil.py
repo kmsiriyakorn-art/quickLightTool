@@ -2,10 +2,8 @@ import maya.cmds as cmds
 
 def create_light_by_role(name, role, color, intens , exp, size):
     """Create an Arnold light with the given role and QColor."""
-    # Create Arnold area light (returns shape name)
-    light = cmds.shadingNode("aiAreaLight", asLight=True, name=name)
-    
 
+    light = cmds.shadingNode("aiAreaLight", asLight=True, name=name)
     # Get the transform parent
     parent = cmds.listRelatives(light, parent=True)
     transform = parent[0] if parent else light
@@ -14,12 +12,8 @@ def create_light_by_role(name, role, color, intens , exp, size):
     # Get RGB from QColor (0-1 float)
     r, g, b = color.redF(), color.greenF(), color.blueF()
 
-    # Set the light color
     cmds.setAttr(f"{newname}.color", r, g, b, type="double3")
 
-    cmds.setAttr(f"{newname}.translate", 3, 4, 5)
-
-    # Optional: position based on role
     if role.lower() == "key":
         cmds.setAttr(f"{newname}.translate", -4*size, 2*size, 4*size)
         cmds.setAttr(f"{newname}.rotate", 0, -45, 0)

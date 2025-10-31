@@ -92,7 +92,6 @@ class QuickLightDialog(QtWidgets.QDialog):
 		self.lightSizeSpinBox = QtWidgets.QSpinBox()
 		self.lightSizeSpinBox.setFixedSize(QSize(70,20))
 		self.lightSizeSpinBox.setMinimum(1)
-		#self.lightSizeLabel2 = QtWidgets.QLabel('*Light Size only effect scale and position  \nand will not effect intensity or exposure *')
 		self.lightSizeLabel2 = QtWidgets.QLabel('* bigger light = less brightness * \n* increase the intensity and exposure for visible brightness *',alignment=QtCore.Qt.AlignCenter)
 		
 		usLocale = QtCore.QLocale(QtCore.QLocale.Language.English, QtCore.QLocale.Country.UnitedStates)

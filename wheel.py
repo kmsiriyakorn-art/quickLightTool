@@ -12,7 +12,7 @@ class SimpleColorWheel(QtWidgets.QWidget):
 	def __init__(self, radius=120, harmony_mode="analogous"):   
 		super(SimpleColorWheel, self).__init__()
 		self.radius = radius
-		self.harmony_mode = harmony_mode # can be "complementary", "triad", etc.
+		self.harmony_mode = harmony_mode 
 		self.setFixedSize(radius * 2, radius * 2)
 		self.selected_color = QtGui.QColor(255, 0, 0)
 		self.current_angle = 0
@@ -39,7 +39,6 @@ class SimpleColorWheel(QtWidgets.QWidget):
 		# Draw indicators (for selected + harmony colors)
 		painter.setBrush(QtCore.Qt.white)
 		painter.setPen(QtGui.QPen(QtGui.QColor("black"), 1))
-		#painter.setPen(QtCore.Qt.NoPen)
 
 
 		# always draw the selected hue indicator
@@ -50,7 +49,6 @@ class SimpleColorWheel(QtWidgets.QWidget):
 		painter.drawEllipse(QtCore.QPointF(px, py), 10, 10)
 
 		harmony_angles = []
-		# --- Harmony Mode: Complementary ---
 		if self.harmony_mode == "complementary":
 			harmony_angles = [(self.current_angle + 180) % 360]
 
@@ -78,7 +76,6 @@ class SimpleColorWheel(QtWidgets.QWidget):
 			py_h = cy - (self.radius-indicator_offset) * math.sin(rad)
 			painter.drawEllipse(QtCore.QPointF(px_h, py_h), 10, 10)
 
-		#elif self.harmony_mode == "analogous":
 
 	def _update_color(self, pos):
 		dx = pos.x() - self.width() / 2
@@ -88,7 +85,6 @@ class SimpleColorWheel(QtWidgets.QWidget):
 		
 		self.selected_color = QtGui.QColor.fromHsv(int(angle), 255, 255)
 		self.colorSelected.emit(self.selected_color)
-		#self.colorSelected.emit(colors)
 		self.update()
 
 	def get_harmony_angles(self):
